@@ -22,7 +22,6 @@ package dynamicconfig
 
 import (
 	"reflect"
-	"strconv"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -199,7 +198,7 @@ func (c *Collection) GetIntPropertyFilteredByShardID(key Key, defaultValue int) 
 
 		val, err := c.client.GetIntValue(
 			key,
-			getFilterMap(ShardIDFilter(strconv.Itoa(shardID))),
+			getFilterMap(ShardIDFilter(shardID)),
 			defaultValue,
 		)
 		if err != nil {
@@ -227,7 +226,7 @@ func (c *Collection) GetFloat64PropertyFilteredByShardID(key Key, defaultValue f
 	return func(shardID int) float64 {
 		val, err := c.client.GetFloatValue(
 			key,
-			getFilterMap(ShardIDFilter(strconv.Itoa(shardID))),
+			getFilterMap(ShardIDFilter(shardID)),
 			defaultValue,
 		)
 		if err != nil {
@@ -295,7 +294,7 @@ func (c *Collection) GetDurationPropertyFilteredByShardID(key Key, defaultValue 
 	return func(shardID int) time.Duration {
 		val, err := c.client.GetDurationValue(
 			key,
-			getFilterMap(ShardIDFilter(strconv.Itoa(shardID))),
+			getFilterMap(ShardIDFilter(shardID)),
 			defaultValue,
 		)
 		if err != nil {

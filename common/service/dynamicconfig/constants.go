@@ -903,7 +903,7 @@ const (
 type Filter int
 
 func (f Filter) String() string {
-	if f <= unknownFilter || f > TaskType {
+	if f <= unknownFilter || f > ShardID {
 		return filters[unknownFilter]
 	}
 	return filters[f]
@@ -967,7 +967,7 @@ func TaskTypeFilter(taskType int) FilterOption {
 }
 
 // ShardIDFilter filters by shard id
-func ShardIDFilter(shardID string) FilterOption {
+func ShardIDFilter(shardID int) FilterOption {
 	return func(filterMap map[Filter]interface{}) {
 		filterMap[ShardID] = shardID
 	}
