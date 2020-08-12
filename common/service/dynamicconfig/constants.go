@@ -967,7 +967,7 @@ func TaskTypeFilter(taskType int) FilterOption {
 }
 
 // ShardIDFilter filters by shard id
-func ShardIDFilter(shardID int) FilterOption {
+func ShardIDFilter(shardID string) FilterOption {
 	return func(filterMap map[Filter]interface{}) {
 		filterMap[ShardID] = shardID
 	}
